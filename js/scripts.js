@@ -40,6 +40,7 @@ const food = {
 };
 
 let direction, loopId;
+let isGameOver = false;
 
 const drawFood = () => {
     const {x, y, color} = food;
@@ -90,15 +91,15 @@ const drawGrid = () => {
     ctx.lineWidth = 1;
     ctx.strokeStyle = '#191919';
 
-    for(let i = 30; i < canvas.width; i += 30) {
+    for(let i = size; i < canvas.width; i += size) {
         ctx.beginPath();
         ctx.lineTo(i, 0);
-        ctx.lineTo(i, 600);
+        ctx.lineTo(i, canvas.width);
         ctx.stroke();
         
         ctx.beginPath();
         ctx.lineTo(0, i);
-        ctx.lineTo(600, i);
+        ctx.lineTo(canvas.width, i);
         ctx.stroke();
     }
 };
@@ -141,6 +142,8 @@ const checkCollision = () => {
 };
 
 const gameOver = () => {
+    isGameOver = true;
+
     direction = undefined;
 
     menu.style.display = 'flex';
@@ -149,20 +152,24 @@ const gameOver = () => {
 };
 
 const gameLoop = () => {
-    clearInterval(loopId);
+    if(isGameOver === false){
+        clearInterval(loopId);
 
-    ctx.clearRect(0, 0, 600, 600);
+        ctx.clearRect(0, 0, canvas.width, canvas.width);
 
-    drawGrid();
-    drawFood();
-    moveSnake();
-    drawSnake();
-    checkEat();
-    checkCollision();
+        drawGrid();
+        drawFood();
+        moveSnake();
+        drawSnake();
+        checkEat();
+        checkCollision();
 
-    loopId = setTimeout(() => {
-        gameLoop();
-    }, 300)
+        loopId = setTimeout(() => {
+            gameLoop();
+        }, 300)
+    }else {
+        return;
+    };
 };
 
 gameLoop();
@@ -185,4 +192,8 @@ buttonPlay.addEventListener("click", () => {
     canvas.style.filter = 'none';
 
     snake = [{ x: 270, y: 270 }];
+    
+    isGameOver = false;
+    
+    gameLoop();
 });

@@ -16,6 +16,7 @@ body{
 
 canvas {
     background-color: #111;
+    max-width: 100%;
 }
 
 .score {
@@ -63,4 +64,30 @@ canvas {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .score {
+        font-size: 1.5rem;
+        flex-direction: row;
+    }
+
+    .score-value {
+        font-size: 1.5rem;
+        display: flex;
+        margin-top: 3px;
+        margin-left: 4px;
+    }
+
+    .game-over {
+        font-size: 2rem;
+    }
+
+    .final-score {
+        font-size: 1.2rem;
+    }
+
+    .btn-play {
+        font-size: 0.9rem;
+    }
 }
