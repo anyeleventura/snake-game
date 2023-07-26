@@ -79,9 +79,15 @@ canvas {
     }
 
     .btn-up{
-        margin-left: 32px;
-        margin-bottom: 4px;
+        margin-left: 78px;
+        margin-bottom: 10px;
         margin-top: 20px;
+        padding: 6px;
+    }
+
+    .btn-left, .btn-right, .btn-down{
+        padding: 6px;
+        margin: 10px;
     }
 
     .score {
