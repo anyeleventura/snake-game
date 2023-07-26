@@ -17,6 +17,7 @@ body{
 canvas {
     background-color: #111;
     max-width: 100%;
+    min-height: 60vh;
 }
 
 .score {
@@ -66,14 +67,31 @@ canvas {
     cursor: pointer;
 }
 
+.mobile-controls{
+    display: none;
+}
+
+
+
 @media screen and (max-width: 768px) {
+    .mobile-controls{
+        display: block;
+    }
+
+    .btn-up{
+        margin-left: 32px;
+        margin-bottom: 4px;
+        margin-top: 20px;
+    }
+
     .score {
-        font-size: 1.5rem;
+        margin-bottom: 10px;
+        font-size: 2rem;
         flex-direction: row;
     }
 
     .score-value {
-        font-size: 1.5rem;
+        font-size: 2rem;
         display: flex;
         margin-top: 3px;
         margin-left: 4px;
